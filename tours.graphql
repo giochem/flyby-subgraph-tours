@@ -1,0 +1,34 @@
+extend schema @link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key"])
+
+extend type Query {
+  tour(id: ID!): Tour
+  tours: [Tour]
+}
+
+extend type Mutation {
+  createTour(tour: TourInput!): TourResponse!
+  updateTour(id: ID!, tour: TourInput!): TourResponse!
+  deleteTour(id: ID!): TourResponse!
+}
+
+type Tour @key(fields: "id") {
+  id: ID!
+  name: String!
+  decs: String!
+  image: String!
+  quantity: Int!
+  active: ID
+}
+
+input TourInput {
+  name: String!
+  decs: String!
+  image: String!
+  quantity: Int
+}
+type TourResponse {
+  code: Int!
+  success: Boolean!
+  message: String!
+  tour: Tour
+}
