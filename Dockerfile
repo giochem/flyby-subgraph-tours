@@ -11,6 +11,6 @@ RUN npm install --force
 
 COPY . .
 
-EXPOSE 4004
+EXPOSE 4002
 
 CMD [ "npm", "run", "start" ]   
